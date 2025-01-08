@@ -15,10 +15,11 @@
             <h2>MotorShop</h2>
         </div>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">About</a></li>
+           <button onclick="showSection('home')">home</button>
+            <button onclick="showSection('shop')">shop</button>
+            <button onclick="showSection('contact')">contact</button>
+            <button onclick="showSection('about')">about</button>
+            <button onclick="checkout()">Checkout</button>
         </ul>
         <div class="search">
             <input type="text" placeholder="Search for motors...">
@@ -27,12 +28,25 @@
         <div class="add-motor">
             <button>Add Motor</button>
         </div>
+        <button onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
     </nav>
 
    
     <header>
         <h1>Welcome to MotorShop</h1>
         <p>the best motor shop</p>
+
+        <div id="cart-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="toggleCart()">×</span>
+                <h2>Your Cart</h2>
+                <ul id="cart-items"></ul>
+                <p>Total: $<span id="cart-total">0.00</span></p>
+                
+            </div>
+        </div>
+        
+        </div>
     </header>
 
    
@@ -50,6 +64,6 @@
             <p>Our customer support is available around the clock to help you.</p>
         </div>
     </section>
-
+    <script src="index.js"></script>
 </body>
 </html>
