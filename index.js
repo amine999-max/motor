@@ -13,21 +13,11 @@ var motors = [
     factory(3,"GSX-R1000", 390000, "https://lh5.googleusercontent.com/proxy/Bv4G3RC8PCEaJzAU17iuCaJD-LGfTNyFeaUG0JQFPOJf3PxGPOhMYzL08ylm-RXa2tEkEcVaw8rBA2xgRvwM3IXw9dzJNiSskKNcV-kBayXKAtfYl-QlCOLodOM8bi7tEm1WELowU6rx4bqtuEZbt5xjvFo"),
     factory(4,"HP4", 150000, "https://www.motoplanete.com/bmw/zoom-700px/BMW-S-1000-RR-HP4-Race-2020-700px.webp"),
     factory(5,"APRILIA RS ", 150000, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGBV7NdRYvc7Z-WVw6-BouUaFCralSJejkpA&s"),
-<<<<<<< HEAD
     factory(6,"PULSAR RS", 180000, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkUIvFPFYgSBQGq-jIWlvPu3iIDEq9niGT8w&s")
 ];
 var cart = JSON.parse(localStorage.getItem('cart')) || []  // stock cart dans ocal storge
 
 // Function to display the motors list
-=======
-    factory(6,"PULSAR RS", 180000, "https://c4.wallpaperflare.com/wallpaper/854/342/445/kawasaki-z1000-motorsport-speed-kawasaki-z1000-wallpaper-preview.jpg"),
-    factory(7,"PULSAR RS", 500000, "https://m.media-amazon.com/images/I/71ZHT8kpOrL.jpg")
-];
-
-var cart = JSON.parse(localStorage.getItem('cart')) || []  
-
-
->>>>>>> dc84951a52d222ec04e0dc7baa944815f5377583
 function displayMotors() {
     var productsList = document.getElementById("products-list")
     productsList.innerHTML = ''
@@ -45,10 +35,7 @@ function displayMotors() {
         productsList.appendChild(motorDiv)
     }
 }
-<<<<<<< HEAD
 // Function to cart
-=======
->>>>>>> dc84951a52d222ec04e0dc7baa944815f5377583
 function addToCart(id) {
     var motor = null
     for (var i = 0; i < motors.length; i++) {
@@ -58,19 +45,12 @@ function addToCart(id) {
     }
     if (motor) {
         cart.push(motor)
-<<<<<<< HEAD
         localStorage.setItem('cart', JSON.stringify(cart))
-=======
-        localStorage.setItem('cart', JSON.stringify(cart)) // tsajjel fil local storage 
->>>>>>> dc84951a52d222ec04e0dc7baa944815f5377583
         updateCartCount()
     }
     displayCartItems()
 }
-<<<<<<< HEAD
 // Function to remove item from the cart
-=======
->>>>>>> dc84951a52d222ec04e0dc7baa944815f5377583
 function removeFromCart(id) {
     for (var i = 0; i < cart.length; i++) {
         if (cart[i].id === id) {
@@ -78,28 +58,17 @@ function removeFromCart(id) {
             i--
         }
     }
-<<<<<<< HEAD
     localStorage.setItem('cart', JSON.stringify(cart))
-=======
-    localStorage.setItem('cart', JSON.stringify(cart)) // tsajjel lcart fl loal storage 
->>>>>>> dc84951a52d222ec04e0dc7baa944815f5377583
     updateCartCount()
     displayCartItems()
 }
 
-<<<<<<< HEAD
 // Function to update the cart count display
-=======
-
->>>>>>> dc84951a52d222ec04e0dc7baa944815f5377583
 function updateCartCount() {
     document.getElementById('cart-count').textContent = cart.length
 }
 
-<<<<<<< HEAD
 // Function to toggle the cart visibility
-=======
->>>>>>> dc84951a52d222ec04e0dc7baa944815f5377583
 function toggleCart() {
     var cartContainer = document.getElementById('cart-container')
     if (cartContainer.style.display === 'block') {
@@ -110,19 +79,12 @@ function toggleCart() {
     }
 }
 
-<<<<<<< HEAD
 // Function to display items in the cart
-=======
->>>>>>> dc84951a52d222ec04e0dc7baa944815f5377583
 function displayCartItems() {
     var cartItemsList = document.getElementById('cart-items')
     cartItemsList.innerHTML = ''
     if (cart.length === 0) {
-<<<<<<< HEAD
         cartItemsList.innerHTML = '<p>Your cart is empty!</p>'
-=======
-        cartItemsList.innerHTML = '<p>Your cart is empty</p>'
->>>>>>> dc84951a52d222ec04e0dc7baa944815f5377583
     } else {
         for (var i = 0; i < cart.length; i++) {
             var motor = cart[i];
@@ -177,7 +139,6 @@ if (!localStorage.getItem('username')) {
     displayMotors() 
 }
 
-<<<<<<< HEAD
 // motoNew Constructor Function
 function motoNew() {
     this.motors = motors
@@ -205,15 +166,10 @@ var motoNew = new motoNew()
 // Update the addMotor function to use OOP
 function addMotor() {
     var name = prompt("Enter motor name:");
-=======
-function addMotor() {
-    var name = prompt("Enter motor name:")
->>>>>>> dc84951a52d222ec04e0dc7baa944815f5377583
     var price = parseFloat(prompt("Enter motor price:"))
     var image = prompt("Enter image URL:")
 
     if (name && price && image) {
-<<<<<<< HEAD
         motoNew.addMotor(name, price, image)
     } else {
         alert("Invalid motor details");
@@ -247,12 +203,4 @@ function searchFunction() {
     })
 }
 updateCartCount()
-=======
-        var newMotor = factory(motors.length + 1, name, price, image)
-        motors.push(newMotor)
-        displayMotors()
-    } else {
-        alert("Invalid motor details")
-    }
-}
->>>>>>> dc84951a52d222ec04e0dc7baa944815f5377583
+
