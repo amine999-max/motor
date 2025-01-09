@@ -190,7 +190,7 @@ function searchFunction() {
     })
     var productsList = document.getElementById('products-list')
     productsList.innerHTML = ''
-    filteredMotors.forEach(function(motor) {
+    filteredMotors.map(function(motor) {
         var motorDiv = document.createElement('div')
         motorDiv.className = 'motor'
         motorDiv.innerHTML = `
