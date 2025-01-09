@@ -5,51 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motor eCommerce</title>
     <link rel="stylesheet" href="index.css">
-    
 </head>
 <body>
 
-  
     <nav>
         <div class="logo">
             <h2>MotorShop</h2>
         </div>
         <ul>
-           <button onclick="showSection('home')">home</button>
-            <button onclick="showSection('shop')">shop</button>
+            <button onclick="showSection('login')">login</button>
+            <button onclick="showSection('home')">home</button>
             <button onclick="showSection('contact')">contact</button>
             <button onclick="showSection('about')">about</button>
-            <button onclick="checkout()">Checkout</button>
+            <button onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
+            <button >Checkout</button>
         </ul>
         <div class="search">
-            <input type="text" placeholder="Search for motors...">
+            <input type="text" placeholder="Search for motors..." onkeyup="searchFunction()">
             <button>Search</button>
         </div>
         <div class="add-motor">
-            <button>Add Motor</button>
+            <button onclick="addMotor()">Add Motor</button>
         </div>
-        <button onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
+       <section id="home-section" style="display: none;">
+        <h2>Motor Shop</h2>
+        <div id="product-list"></div>
+
+    </section>
+
+    <section id="about-section" style="display: none;">
+        <h2>About Us</h2>
+        <p>We provide high-quality motors with excellent performance.</p>
+    </section>
+
+
+    <section id="contact-section" style="display: none;">
+        <h2>Contact Us</h2>
+        <p>Email: shedymnt@motorshop.com</p>
+        <p>Email : aminerh@motorshop.com</p>
+    </section>
+
+
+    <div id="cart-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="toggleCart()">×</span>
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="cart-total">0.00</span></p>
+            <button onclick="checkout()">Checkout</button>
+        </div>
+    </div>
     </nav>
 
-   
+    <!-- Login Section -->
+    <div id="login-section" class="login-section">
+        <h3>Login</h3>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+    </div>
+
     <header>
         <h1>Welcome to MotorShop</h1>
         <p>the best motor shop</p>
-
-        <div id="cart-modal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="toggleCart()">×</span>
-                <h2>Your Cart</h2>
-                <ul id="cart-items"></ul>
-                <p>Total: $<span id="cart-total">0.00</span></p>
-                
-            </div>
-        </div>
-        
-        </div>
+        <section id="products-list"></section> <!-- Products will be added here -->
     </header>
 
-   
     <section class="features">
         <div class="feature">
             <h2>Fast Delivery</h2>
@@ -60,10 +81,40 @@
             <p>All our motors are tested for quality and performance.</p>
         </div>
         <div class="feature">
-            <h2> Support</h2>
+            <h2>Support</h2>
             <p>Our customer support is available around the clock to help you.</p>
         </div>
+        <div id="cart-container"></div>
     </section>
+    <section id="home-section" style="display: none;">
+        <h2>Motor Shop</h2>
+        <div id="product-list"></div>
+
+    </section>
+
+    <section id="about-section" style="display: none;">
+        <h2>About Us</h2>
+        <p>We provide high-quality motors with excellent performance.</p>
+    </section>
+
+
+    <section id="contact-section" style="display: none;">
+        <h2>Contact Us</h2>
+        <p>Email: shedymnt@motorshop.com</p>
+        <p>Email : aminerh@motorshop.com</p>
+    </section>
+
+
+    <div id="cart-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="toggleCart()">×</span>
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="cart-total">0.00</span></p>
+            <button onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
     <script src="index.js"></script>
 </body>
 </html>
