@@ -23,24 +23,18 @@ nav ul {
     gap: 20px;
 }
 
-<<<<<<< HEAD
         nav ul li {
             display: center;
 
         }
-=======
-nav ul li {
-    display: center;
->>>>>>> bea147d2e0f8bfc77aaca5d6d6ca5db53e4adb20
 
-}
+
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
 }
 
-<<<<<<< HEAD
         a {
             padding: 8px 12px;
             background-color: #ff8c00;
@@ -60,23 +54,6 @@ nav ul li a {
         nav button:hover {
             background-color: #e07b00;
         }
-=======
-nav input[type="text"] {
-    padding: 8px;
-    width: 200px;
-    border: none;
-    border-radius: 5px;
-}
-
-nav button {
-    padding: 8px 12px;
-    background-color: #ff8c00;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #fff;
-}
->>>>>>> bea147d2e0f8bfc77aaca5d6d6ca5db53e4adb20
 
 nav button:hover {
     background-color: #e07b00;
@@ -94,14 +71,11 @@ header h1 {
     margin: 0;
 }
 
-<<<<<<< HEAD
         .feature h2 {
             font-size: 24px;
             margin: 10px 0;
             position : centre;
         }
-=======
->>>>>>> bea147d2e0f8bfc77aaca5d6d6ca5db53e4adb20
 
 .features {
     display: flex;
@@ -111,8 +85,7 @@ header h1 {
     background-color: #fff;
 }
 
-<<<<<<< HEAD
-    /* Existing styles... */
+   
 
 .login-section {
     display: none; 
@@ -202,42 +175,4 @@ header h1 {
     height: auto; 
     border-radius: 12px;
     margin: 20px 0; 
-=======
-.feature {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    width: 200px;
-}
-
-.feature h2 {
-    font-size: 24px;
-    margin: 10px 0;
-    position : centre;
-}
-
-.feature p {
-    font-size: 16px;
-}
-
-
-
-.login-section {
-display: none; 
-text-align: center;
-margin-top: 20px;
-}
-
-.login-section input {
-padding: 8px;
-margin: 10px;
-}
-
-.login-section button {
-padding: 10px 20px;
-background-color: #ff8c00;
-border: none;
-cursor: pointer;
->>>>>>> bea147d2e0f8bfc77aaca5d6d6ca5db53e4adb20
 }

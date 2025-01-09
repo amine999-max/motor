@@ -150,3 +150,34 @@ function addMotor() {
         alert("Invalid motor details")
     }
 }
+// delete motor 
+
+function deleteMotor(id) {
+    motors = motors.filter(function(motor) {
+        return motor.id !== id
+    })
+    displayMotors()
+    alert("Motor deleted successfully!")
+}
+
+// Search 
+function searchFunction() {
+    var query = document.querySelector('input[type="text"]').value.toLowerCase()
+    var filteredMotors = motors.filter(function(motor) {
+        return motor.name.toLowerCase().includes(query)
+    })
+    var productsList = document.getElementById('products-list')
+    productsList.innerHTML = ''
+    filteredMotors.forEach(function(motor) {
+        var motorDiv = document.createElement('div')
+        motorDiv.className = 'motor'
+        motorDiv.innerHTML = `
+            <img src="${motor.image}" alt="${motor.name}">
+            <h3>${motor.name}</h3>
+            <p>Price: $${motor.price}</p>
+            <button onclick="addToCart(${motor.id})">Add to Cart</button>
+        `
+        productsList.appendChild(motorDiv)
+    })
+}
+updateCartCount()
