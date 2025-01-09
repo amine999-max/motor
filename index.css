@@ -25,7 +25,8 @@
         }
 
         nav ul li {
-            display: inline;
+            display: center;
+
         }
 
         nav ul li a {
@@ -40,6 +41,14 @@
             border-radius: 5px;
         }
 
+        a {
+            padding: 8px 12px;
+            background-color: #ff8c00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+        }
         nav button {
             padding: 8px 12px;
             background-color: #ff8c00;
@@ -48,7 +57,6 @@
             cursor: pointer;
             color: #fff;
         }
-
         nav button:hover {
             background-color: #e07b00;
         }
@@ -85,10 +93,101 @@
         .feature h2 {
             font-size: 24px;
             margin: 10px 0;
+            position : centre;
         }
 
         .feature p {
             font-size: 16px;
         }
 
-    
+    /* Existing styles... */
+
+.login-section {
+    display: none; 
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-section input {
+    padding: 8px;
+    margin: 10px;
+}
+
+.login-section button {
+    padding: 10px 20px;
+    background-color: #ff8c00;
+    border: none;
+    cursor: pointer;
+}
+
+
+#cart-container {
+    position: fixed;
+    top: 60px; 
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
+}
+
+#cart-container h2 {
+    margin-top: 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.cart-item .info {
+    flex-grow: 1;
+}
+
+.cart-item button {
+    background-color: #ff8c00;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.cart-item button:hover {
+    background-color: #e07b00;
+}
+.motor-image {
+    width: 800px;
+    height: 500px; 
+    object-fit: cover; 
+    border-radius: 8px;
+}
+.home-image {
+    width: 100%;
+    max-width: 1200px; 
+    height: auto; 
+    border-radius: 12px;
+    margin: 20px 0; 
+}
