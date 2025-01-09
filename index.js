@@ -50,18 +50,6 @@ function addToCart(id) {
     }
     displayCartItems()
 }
-// Function to remove item from the cart
-function removeFromCart(id) {
-    for (var i = 0; i < cart.length; i++) {
-        if (cart[i].id === id) {
-            cart.splice(i, 1)
-            i--
-        }
-    }
-    localStorage.setItem('cart', JSON.stringify(cart))
-    updateCartCount()
-    displayCartItems()
-}
 
 // Function to update the cart count display
 function updateCartCount() {
@@ -115,7 +103,18 @@ function checkout() {
     }
 }
 
-
+// Function to remove item from the cart
+function removeFromCart(id) {
+    for (var i = 0; i < cart.length; i++) {
+        if (cart[i].id === id) {
+            cart.splice(i, 1)
+            i--
+        }
+    }
+    localStorage.setItem('cart', JSON.stringify(cart))
+    updateCartCount()
+    displayCartItems()
+}
 
 // Login function
 function login() {
@@ -139,48 +138,28 @@ if (!localStorage.getItem('username')) {
     displayMotors() 
 }
 
-// motoNew Constructor Function
-function motoNew() {
-    this.motors = motors
-}
-
-// Add a motor
-motoNew.prototype.addMotor = function(name, price, image) {
-    var newMotor = factory(this.motors.length + 1, name, price, image)
-    this.motors.push(newMotor)
-    displayMotors()
-}
-
-// Delete a motor by id
-motoNew.prototype.deleteMotor = function(id) {
-    this.motors = this.motors.find(function(motor) {
-        return motor.id !== id
-    });
-    displayMotors()
-    alert("Motor deleted successfully!");
-}
-
-// Create a new instance of motoNew
-var motoNew = new motoNew()
-
-// Update the addMotor function to use OOP
 function addMotor() {
-    var name = prompt("Enter motor name:");
+    var name = prompt("Enter motor name:")
     var price = parseFloat(prompt("Enter motor price:"))
     var image = prompt("Enter image URL:")
 
     if (name && price && image) {
-        motoNew.addMotor(name, price, image)
+        var newMotor = factory(motors.length + 1, name, price, image)
+        motors.push(newMotor)
+        displayMotors()
     } else {
-        alert("Invalid motor details");
+        alert("Invalid motor details")
     }
 }
+// delete motor 
 
-// Update the deleteMotor function to use OOP
 function deleteMotor(id) {
-    motoNew.deleteMotor(id)
+    motors = motors.filter(function(motor) {
+        return motor.id !== id
+    })
+    displayMotors()
+    alert("Motor deleted successfully!")
 }
-
 
 // Search 
 function searchFunction() {
@@ -190,7 +169,7 @@ function searchFunction() {
     })
     var productsList = document.getElementById('products-list')
     productsList.innerHTML = ''
-    filteredMotors.map(function(motor) {
+    filteredMotors.forEach(function(motor) {
         var motorDiv = document.createElement('div')
         motorDiv.className = 'motor'
         motorDiv.innerHTML = `
@@ -203,4 +182,3 @@ function searchFunction() {
     })
 }
 updateCartCount()
-
