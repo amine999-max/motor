@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motor shop</title>
+    <title>Motor eCommerce</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -25,23 +25,25 @@
         <div class="add-motor">
             <button onclick="addMotor()">Add Motor</button>
         </div>
-        
+        <button >Checkout</button>
         <button onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
     </nav>
 
+    <!-- Login Section -->
     <div id="login-section" class="login-section">
         <h3>Login</h3>
         <input type="text" id="username" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
         <button onclick="login()">Login</button>
     </div>
+    
 
     <header>
         <h1>Welcome to MotorShop</h1>
         <p>the best motor shop</p>
-        <section id="products-list"></section> <!-- Products will be added here -->
+        <img src="https://c4.wallpaperflare.com/wallpaper/727/961/84/kawasaki-z1000-motorsport-ninja-speed-wallpaper-preview.jpg"class="home-image" >
     </header>
-
+    
     <section class="features">
         <div class="feature">
             <h2>Fast Delivery</h2>
@@ -59,8 +61,7 @@
     <section id="cart-container" style="display: none;">
         <h2>Your Cart</h2>
         <ul id="cart-items"></ul> 
-        <button onclick="checkout()">checkout</button>
-        <button onclick="toggleCart()">x</button>
+        <button onclick="toggleCart()">Close Cart</button>
     </section>
     <script src="index.js"></script>
 </body>
