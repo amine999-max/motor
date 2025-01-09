@@ -13,10 +13,19 @@
             <h2>MotorShop</h2>
         </div>
         <ul>
+<<<<<<< HEAD
             <a href="home.html">Home</a>
             <a href="index.html">Shop</a>
             <a href="contact.html">Contact</a>
 
+=======
+            <button onclick="showSection('login')">login</button>
+            <button onclick="showSection('home')">home</button>
+            <button onclick="showSection('contact')">contact</button>
+            <button onclick="showSection('about')">about</button>
+            <button onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
+            <button >Checkout</button>
+>>>>>>> bea147d2e0f8bfc77aaca5d6d6ca5db53e4adb20
         </ul>
         <div class="search">
             <input type="text" placeholder="Search for motors..." onkeyup="searchFunction()">
@@ -25,11 +34,45 @@
         <div class="add-motor">
             <button onclick="addMotor()">Add Motor</button>
         </div>
+<<<<<<< HEAD
 
         <button onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
     </nav>
 
     
+=======
+       <section id="home-section" style="display: none;">
+        <h2>Motor Shop</h2>
+        <div id="product-list"></div>
+
+    </section>
+
+    <section id="about-section" style="display: none;">
+        <h2>About Us</h2>
+        <p>We provide high-quality motors with excellent performance.</p>
+    </section>
+
+
+    <section id="contact-section" style="display: none;">
+        <h2>Contact Us</h2>
+        <p>Email: shedymnt@motorshop.com</p>
+        <p>Email : aminerh@motorshop.com</p>
+    </section>
+
+
+    <div id="cart-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="toggleCart()">×</span>
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="cart-total">0.00</span></p>
+            <button onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+    </nav>
+
+    <!-- Login Section -->
+>>>>>>> bea147d2e0f8bfc77aaca5d6d6ca5db53e4adb20
     <div id="login-section" class="login-section">
         <h3>Login</h3>
         <input type="text" id="username" placeholder="Username">
@@ -40,7 +83,11 @@
     <header>
         <h1>Welcome to MotorShop</h1>
         <p>the best motor shop</p>
+<<<<<<< HEAD
         <section id="products-list"></section> 
+=======
+        <section id="products-list"></section> <!-- Products will be added here -->
+>>>>>>> bea147d2e0f8bfc77aaca5d6d6ca5db53e4adb20
     </header>
 
     <section class="features">
@@ -56,13 +103,46 @@
             <h2>Support</h2>
             <p>Our customer support is available around the clock to help you.</p>
         </div>
+        <div id="cart-container"></div>
     </section>
+<<<<<<< HEAD
     <section id="cart-container" style="display: none;">
         <h2>Your Cart</h2>
         <ul id="cart-items"></ul> 
         <button onclick="toggleCart()">x</button>
         <button onclick="checkout()">checkout</button>
     </section>
+=======
+    <section id="home-section" style="display: none;">
+        <h2>Motor Shop</h2>
+        <div id="product-list"></div>
+
+    </section>
+
+    <section id="about-section" style="display: none;">
+        <h2>About Us</h2>
+        <p>We provide high-quality motors with excellent performance.</p>
+    </section>
+
+
+    <section id="contact-section" style="display: none;">
+        <h2>Contact Us</h2>
+        <p>Email: shedymnt@motorshop.com</p>
+        <p>Email : aminerh@motorshop.com</p>
+    </section>
+
+
+    <div id="cart-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="toggleCart()">×</span>
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="cart-total">0.00</span></p>
+            <button onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+>>>>>>> bea147d2e0f8bfc77aaca5d6d6ca5db53e4adb20
     <script src="index.js"></script>
 </body>
 </html>
