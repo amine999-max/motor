@@ -13,13 +13,11 @@ var motors = [
     factory(3,"GSX-R1000", 390000, "https://lh5.googleusercontent.com/proxy/Bv4G3RC8PCEaJzAU17iuCaJD-LGfTNyFeaUG0JQFPOJf3PxGPOhMYzL08ylm-RXa2tEkEcVaw8rBA2xgRvwM3IXw9dzJNiSskKNcV-kBayXKAtfYl-QlCOLodOM8bi7tEm1WELowU6rx4bqtuEZbt5xjvFo"),
     factory(4,"HP4", 150000, "https://www.motoplanete.com/bmw/zoom-700px/BMW-S-1000-RR-HP4-Race-2020-700px.webp"),
     factory(5,"APRILIA RS ", 150000, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGBV7NdRYvc7Z-WVw6-BouUaFCralSJejkpA&s"),
-    factory(6,"PULSAR RS", 180000, "https://c4.wallpaperflare.com/wallpaper/854/342/445/kawasaki-z1000-motorsport-speed-kawasaki-z1000-wallpaper-preview.jpg"),
-    factory(7,"PULSAR RS", 500000, "https://m.media-amazon.com/images/I/71ZHT8kpOrL.jpg")
+    factory(6,"PULSAR RS", 180000, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkUIvFPFYgSBQGq-jIWlvPu3iIDEq9niGT8w&s")
 ];
+var cart = JSON.parse(localStorage.getItem('cart')) || []  // stock cart dans ocal storge
 
-var cart = JSON.parse(localStorage.getItem('cart')) || []  
-
-
+// Function to display the motors list
 function displayMotors() {
     var productsList = document.getElementById("products-list")
     productsList.innerHTML = ''
@@ -37,6 +35,7 @@ function displayMotors() {
         productsList.appendChild(motorDiv)
     }
 }
+// Function to cart
 function addToCart(id) {
     var motor = null
     for (var i = 0; i < motors.length; i++) {
@@ -46,11 +45,12 @@ function addToCart(id) {
     }
     if (motor) {
         cart.push(motor)
-        localStorage.setItem('cart', JSON.stringify(cart)) // tsajjel fil local storage 
+        localStorage.setItem('cart', JSON.stringify(cart))
         updateCartCount()
     }
     displayCartItems()
 }
+// Function to remove item from the cart
 function removeFromCart(id) {
     for (var i = 0; i < cart.length; i++) {
         if (cart[i].id === id) {
@@ -58,16 +58,17 @@ function removeFromCart(id) {
             i--
         }
     }
-    localStorage.setItem('cart', JSON.stringify(cart)) // tsajjel lcart fl loal storage 
+    localStorage.setItem('cart', JSON.stringify(cart))
     updateCartCount()
     displayCartItems()
 }
 
-
+// Function to update the cart count display
 function updateCartCount() {
     document.getElementById('cart-count').textContent = cart.length
 }
 
+// Function to toggle the cart visibility
 function toggleCart() {
     var cartContainer = document.getElementById('cart-container')
     if (cartContainer.style.display === 'block') {
@@ -78,11 +79,12 @@ function toggleCart() {
     }
 }
 
+// Function to display items in the cart
 function displayCartItems() {
     var cartItemsList = document.getElementById('cart-items')
     cartItemsList.innerHTML = ''
     if (cart.length === 0) {
-        cartItemsList.innerHTML = '<p>Your cart is empty</p>'
+        cartItemsList.innerHTML = '<p>Your cart is empty!</p>'
     } else {
         for (var i = 0; i < cart.length; i++) {
             var motor = cart[i];
@@ -137,19 +139,47 @@ if (!localStorage.getItem('username')) {
     displayMotors() 
 }
 
+// motoNew Constructor Function
+function motoNew() {
+    this.motors = motors
+}
+
+// Add a motor
+motoNew.prototype.addMotor = function(name, price, image) {
+    var newMotor = factory(this.motors.length + 1, name, price, image)
+    this.motors.push(newMotor)
+    displayMotors()
+}
+
+// Delete a motor by id
+motoNew.prototype.deleteMotor = function(id) {
+    for (var i = 0; i < this.motors.length; i++) {
+        if (this.motors[i].id === id) {
+            this.motors.splice(i, 1)
+            i--
+        }
+    }
+    displayMotors()
+    alert("Motor deleted successfully!")
+}
+
+// Create a new instance of motoNew
+var motoNew = new motoNew()
+
+// Update the addMotor function to use OOP
 function addMotor() {
-    var name = prompt("Enter motor name:")
+    var name = prompt("Enter motor name:");
     var price = parseFloat(prompt("Enter motor price:"))
     var image = prompt("Enter image URL:")
 
     if (name && price && image) {
-        var newMotor = factory(motors.length + 1, name, price, image)
-        motors.push(newMotor)
-        displayMotors()
+        motoNew.addMotor(name, price, image)
     } else {
-        alert("Invalid motor details")
+        alert("Invalid motor details");
     }
 }
+
+// Update the deleteMotor function to use OOP
 // delete motor 
 
 function deleteMotor(id) {
@@ -160,24 +190,33 @@ function deleteMotor(id) {
     alert("Motor deleted successfully!")
 }
 
+
 // Search 
 function searchFunction() {
-    var query = document.querySelector('input[type="text"]').value.toLowerCase()
-    var filteredMotors = motors.filter(function(motor) {
-        return motor.name.toLowerCase().includes(query)
-    })
-    var productsList = document.getElementById('products-list')
-    productsList.innerHTML = ''
-    filteredMotors.forEach(function(motor) {
-        var motorDiv = document.createElement('div')
-        motorDiv.className = 'motor'
+    var query = document.querySelector('input[type="text"]').value.toLowerCase();
+    var filteredMotors = [];
+    
+    for (var i = 0; i < motors.length; i++) {
+        if (motors[i].name.toLowerCase().includes(query)) {
+            filteredMotors.push(motors[i]);
+        }
+    }
+
+    var productsList = document.getElementById('products-list');
+    productsList.innerHTML = '';
+
+    for (var i = 0; i < filteredMotors.length; i++) {
+        var motorDiv = document.createElement('div');
+        motorDiv.className = 'motor';
         motorDiv.innerHTML = `
-            <img src="${motor.image}" alt="${motor.name}">
-            <h3>${motor.name}</h3>
-            <p>Price: $${motor.price}</p>
-            <button onclick="addToCart(${motor.id})">Add to Cart</button>
-        `
-        productsList.appendChild(motorDiv)
-    })
+            <img src="${filteredMotors[i].image}" alt="${filteredMotors[i].name}">
+            <h3>${filteredMotors[i].name}</h3>
+            <p>Price: $${filteredMotors[i].price}</p>
+            <button onclick="addToCart(${filteredMotors[i].id})">Add to Cart</button>
+        `;
+        productsList.appendChild(motorDiv);
+    }
+
+    updateCartCount();
 }
-updateCartCount()
+
