@@ -150,6 +150,7 @@ function addMotor() {
     }
 }
 // delete motor 
+
 function deleteMotor(id) {
     for (let i = 0; i < motors.length; i++) {
         if (motors[i].id === id) {
@@ -164,18 +165,18 @@ function deleteMotor(id) {
 // Search 
 function searchFunction() {
     var query = document.querySelector('input[type="text"]').value.toLowerCase();
-    var filteredMotors = [];
+    var arr = [];
     
     for (var i = 0; i < motors.length; i++) {
         if (motors[i].name.toLowerCase().includes(query)) {
-            filteredMotors.push(motors[i]);
+            arr.push(motors[i]);
         }
     }
 
     var productsList = document.getElementById('products-list');
     productsList.innerHTML = '';
 
-    for (var i = 0; i < filteredMotors.length; i++) {
+    for (var i = 0; i < arr.length; i++) {
         var motorDiv = document.createElement('div');
         motorDiv.className = 'motor';
         motorDiv.innerHTML = `
