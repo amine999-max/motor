@@ -15,7 +15,7 @@ var motors = [
     factory(5,"APRILIA RS ", 150000, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGBV7NdRYvc7Z-WVw6-BouUaFCralSJejkpA&s"),
     factory(6,"PULSAR RS", 180000, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkUIvFPFYgSBQGq-jIWlvPu3iIDEq9niGT8w&s")
 ];
-var cart = JSON.parse(localStorage.getItem('cart')) || []  // stock cart dans ocal storge
+var cart = JSON.parse(localStorage.getItem('cart')) || [] // Reads data stored in localStorage  //يقوم بقراءة البيانات المخزنة في localStorage
 
 // Function to display the motors list
 function displayMotors() {
@@ -94,9 +94,9 @@ function displayCartItems() {
 // Checkout
 function checkout() {
     if (cart.length === 0) {
-        alert("Your cart is empty!")
+        alert("Your cart is empty!")   // ken cart fergha afficher msg
     } else {
-        alert("Thank you for your purchase!")
+        alert("Thank you for your purchase!") // ken lcart fiha affichi msg w faragh l cart 
         cart.length = 0
         updateCartCount()
         toggleCart()
@@ -111,7 +111,7 @@ function removeFromCart(id) {
             i--
         }
     }
-    localStorage.setItem('cart', JSON.stringify(cart))
+    localStorage.setItem('cart', JSON.stringify(cart))//Convert the cart array to a text string so it can be stored in localStorage.
     updateCartCount()
     displayCartItems()
 }
@@ -122,7 +122,7 @@ function login() {
     var password = document.getElementById('password').value
 
     if (username && password) {
-        localStorage.setItem('username', username)
+        localStorage.setItem('username', username) //tsajjel fl localStorage.ta7t username
         alert('Logged in successfully!')
         document.getElementById('login-section').style.display = 'none'
         displayMotors()
@@ -130,7 +130,6 @@ function login() {
         alert('Please enter valid credentials!')
     }
 }
-
 if (!localStorage.getItem('username')) {
     document.getElementById('login-section').style.display = 'block'  
 } else {
@@ -139,8 +138,8 @@ if (!localStorage.getItem('username')) {
 }
 
 function addMotor() {
-    var name = prompt("Enter motor name:")
-    var price = parseFloat(prompt("Enter motor price:"))
+    var name = prompt("Enter motor name:")   //Afficher une fenêtre contextuelle
+    var price = parseFloat(prompt("Enter motor price:")) //parseFloat est utilisé pour convertir le texte saisi par l’utilisateur en une valeur décimale (float),
     var image = prompt("Enter image URL:")
 
     if (name && price && image) {
@@ -151,45 +150,44 @@ function addMotor() {
         alert("Invalid motor details")
     }
 }
-// delete motor 
-
-// Update the deleteMotor function to use OOP
-// delete motor 
-
+// delete motor  
 function deleteMotor(id) {
-    motors = motors.filter(function(motor) {
-        return motor.id !== id
-    })
+    for (let i = 0; i < motors.length; i++) {
+        if (motors[i].id === id) {
+            motors.splice(i, 1)
+            i--
+        }
+    }
     displayMotors()
-    alert("Motor deleted successfully!")
+    alert("Motor deleted successfully")
 }
 
 // Search 
 function searchFunction() {
     var query = document.querySelector('input[type="text"]').value.toLowerCase();
-    var filteredMotors = [];
+    var arr = [];
     
     for (var i = 0; i < motors.length; i++) {
         if (motors[i].name.toLowerCase().includes(query)) {
-            filteredMotors.push(motors[i]);
+            arr.push(motors[i])
         }
     }
 
-    var productsList = document.getElementById('products-list');
-    productsList.innerHTML = '';
+    var productsList = document.getElementById('products-list')
+    productsList.innerHTML = ''
 
-    for (var i = 0; i < filteredMotors.length; i++) {
-        var motorDiv = document.createElement('div');
-        motorDiv.className = 'motor';
+    for (var i = 0; i < arr.length; i++) {
+        var motorDiv = document.createElement('div')
+        motorDiv.className = 'motor'
         motorDiv.innerHTML = `
-            <img src="${filteredMotors[i].image}" alt="${filteredMotors[i].name}">
-            <h3>${filteredMotors[i].name}</h3>
-            <p>Price: $${filteredMotors[i].price}</p>
-            <button onclick="addToCart(${filteredMotors[i].id})">Add to Cart</button>
+            <img src="${arr[i].image}" alt="${arr[i].name}">
+            <h3>${arr[i].name}</h3>
+            <p>Price: $${arr[i].price}</p>
+            <button onclick="addToCart(${arr[i].id})">Add to Cart</button>
         `;
-        productsList.appendChild(motorDiv);
+        productsList.appendChild(motorDiv)
     }
 
-    updateCartCount();
+    updateCartCount()
 }
 
