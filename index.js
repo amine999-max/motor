@@ -5,7 +5,7 @@ function factory(id, name, price, image) {
         name: name,
         price: price,
         image: image,  
-    };
+    }
 }
 var motors = [
     factory(1,"NINJA H2R", 290000, "https://cdn.pixabay.com/photo/2021/04/19/05/12/kawasaki-ninja-h2r-6190256_960_720.jpg"),
@@ -14,10 +14,10 @@ var motors = [
     factory(4,"HP4", 150000, "https://www.motoplanete.com/bmw/zoom-700px/BMW-S-1000-RR-HP4-Race-2020-700px.webp"),
     factory(5,"APRILIA RS ", 150000, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGBV7NdRYvc7Z-WVw6-BouUaFCralSJejkpA&s"),
     factory(6,"PULSAR RS", 180000, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkUIvFPFYgSBQGq-jIWlvPu3iIDEq9niGT8w&s")
-];
-var cart = JSON.parse(localStorage.getItem('cart')) || [] // Reads data stored in localStorage  //يقوم بقراءة البيانات المخزنة في localStorage
+]
+var cart = JSON.parse(localStorage.getItem('cart')) || []  // stock cart in local storge
 
-// Function to display the motors list
+// Function display motors list
 function displayMotors() {
     var productsList = document.getElementById("products-list")
     productsList.innerHTML = ''
@@ -35,7 +35,7 @@ function displayMotors() {
         productsList.appendChild(motorDiv)
     }
 }
-// Function to cart
+// Function addto cart
 function addToCart(id) {
     var motor = null
     for (var i = 0; i < motors.length; i++) {
@@ -51,12 +51,11 @@ function addToCart(id) {
     displayCartItems()
 }
 
-// Function to update the cart count display
 function updateCartCount() {
     document.getElementById('cart-count').textContent = cart.length
 }
 
-// Function to toggle the cart visibility
+// Function toggle cart 
 function toggleCart() {
     var cartContainer = document.getElementById('cart-container')
     if (cartContainer.style.display === 'block') {
@@ -67,12 +66,12 @@ function toggleCart() {
     }
 }
 
-// Function to display items in the cart
+// Function display items 
 function displayCartItems() {
     var cartItemsList = document.getElementById('cart-items')
-    cartItemsList.innerHTML = ''
+    cartItemsList.innerHTML = ""
     if (cart.length === 0) {
-        cartItemsList.innerHTML = '<p>Your cart is empty!</p>'
+        cartItemsList.innerHTML = '<p>Your cart is empty</p>'
     } else {
         for (var i = 0; i < cart.length; i++) {
             var motor = cart[i];
@@ -103,7 +102,7 @@ function checkout() {
     }
 }
 
-// Function to remove item from the cart
+// Function remove item 
 function removeFromCart(id) {
     for (var i = 0; i < cart.length; i++) {
         if (cart[i].id === id) {
@@ -136,7 +135,7 @@ if (!localStorage.getItem('username')) {
     document.getElementById('login-section').style.display = 'block'  
     displayMotors() 
 }
-
+// add motor
 function addMotor() {
     var name = prompt("Enter motor name:")   //Afficher une fenêtre contextuelle
     var price = parseFloat(prompt("Enter motor price:")) //parseFloat est utilisé pour convertir le texte saisi par l’utilisateur en une valeur décimale (float),
@@ -150,7 +149,7 @@ function addMotor() {
         alert("Invalid motor details")
     }
 }
-// delete motor  
+// delete motor 
 function deleteMotor(id) {
     for (let i = 0; i < motors.length; i++) {
         if (motors[i].id === id) {
@@ -165,20 +164,20 @@ function deleteMotor(id) {
 // Search 
 function searchFunction() {
     var query = document.querySelector('input[type="text"]').value.toLowerCase();
-    var arr = [];
+    var filteredMotors = [];
     
     for (var i = 0; i < motors.length; i++) {
         if (motors[i].name.toLowerCase().includes(query)) {
-            arr.push(motors[i])
+            filteredMotors.push(motors[i]);
         }
     }
 
-    var productsList = document.getElementById('products-list')
-    productsList.innerHTML = ''
+    var productsList = document.getElementById('products-list');
+    productsList.innerHTML = '';
 
-    for (var i = 0; i < arr.length; i++) {
-        var motorDiv = document.createElement('div')
-        motorDiv.className = 'motor'
+    for (var i = 0; i < filteredMotors.length; i++) {
+        var motorDiv = document.createElement('div');
+        motorDiv.className = 'motor';
         motorDiv.innerHTML = `
             <img src="${arr[i].image}" alt="${arr[i].name}">
             <h3>${arr[i].name}</h3>
