@@ -137,8 +137,8 @@ if (!localStorage.getItem('username')) {
 }
 // add motor
 function addMotor() {
-    var name = prompt("Enter motor name:")   //Afficher une fenêtre contextuelle
-    var price = parseFloat(prompt("Enter motor price:")) //parseFloat est utilisé pour convertir le texte saisi par l’utilisateur en une valeur décimale (float),
+    var name = prompt("Enter motor name:")   //Afficher une fenêtre
+    var price =(prompt("Enter motor price:")) 
     var image = prompt("Enter image URL:")
 
     if (name && price && image) {
